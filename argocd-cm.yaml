@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  application.yaml: |
+    repositories:
+    - url: https://github.com/geetha1234567890/Devops-project-from-Markeble
+      name: Devops-project-from-Markeble
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+    autoSync:
+      enabled: true
+  rbac.yaml: |
+    policy.csv: |
+      p, admin, applications, *, *, *
+      p, developer, applications, get, *, *
+
